@@ -1,11 +1,9 @@
 package personnages;
 
-import personnages.Romain;
-
 public class Gaulois {
 	private String nom;
 	private int force;
-	private int effetPotion = 1 ;
+	private int effetPotion = 1;
 
 	public Gaulois(String nom, int force) {
 		this.nom = nom;
@@ -34,22 +32,22 @@ public class Gaulois {
 	public String toString() {
 		return "Gaulois [nom=" + nom + ", force=" + force + ", effetPotion=" + effetPotion + "]";
 	}
-	public int boirePotion (int forcePotion ) {
+
+	public int boirePotion(int forcePotion) {
 		this.effetPotion = forcePotion;
-		parler("Merci Druide, je sens que ma force est "+ forcePotion +" fois décuplée");
+		parler("Merci Druide, je sens que ma force est " + forcePotion + " fois décuplée");
 		return effetPotion;
 	}
-	
+
 	public static void main(String[] args) {
-		Gaulois asterix = new Gaulois("Asterix",8);
+		Gaulois asterix = new Gaulois("Asterix", 8);
 		Romain jojo = new Romain("Jojo", 6);
 		asterix.prendreParole();
 		asterix.parler("Hello world!");
 		asterix.frapper(jojo);
 		asterix.boirePotion(6);
 		asterix.frapper(jojo);
-		
+
 	}
-	
 
 }
