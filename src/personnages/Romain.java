@@ -20,7 +20,7 @@ public class Romain {
 	}
 
 	private String prendreParole() {
-		return "le romain" + nom + ":";
+		return "le romain " + nom + ":";
 	}
 	public void recevoirCoup(int forceCoup) {
 		force -= forceCoup;
@@ -32,6 +32,12 @@ public class Romain {
 
 		}
 		
+	}
+	public static void main(String[] args) {
+		Romain jojo = new Romain("Jojo", 10);
+		jojo.prendreParole();
+		jojo.parler("Hello wolrd!");
+		jojo.recevoirCoup(11);
 	}
 
 }
