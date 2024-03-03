@@ -4,7 +4,7 @@ public class Romain {
 	private String nom;
 	private int force;
 	private Equipement[] equipements = new Equipement[2];
-	public int nbEquipement = 0;
+	private int nbEquipement = 0;
 
 	public Romain(String nom, int force) {
 		assert force > 0;
