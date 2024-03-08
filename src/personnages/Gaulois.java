@@ -2,9 +2,10 @@ package personnages;
 
 public class Gaulois {
 	private String nom;
-	private int force, nb_trophees;
+	private int force;
+	int nbTrophees;
 	private int effetPotion = 1;
-	private Equipement trophees[] = new Equipement[100];
+	private Equipement[] trophees = new Equipement[100];
 
 	public Gaulois(String nom, int force) {
 		this.nom = nom;
@@ -21,28 +22,16 @@ public class Gaulois {
 	}
 
 	private String prendreParole() {
-		String texte = "Le gaulois " + nom + " : ";
-		return texte;
+		return "Le gaulois " + nom + " : ";
 	}
-
-	// private String prendreParole() {
-	// return "Le gaulois " + nom + ":";
-	// }
 
 	public void frapper(Romain romain) {
 		System.out.println(nom + " envoie un grand coup dans la mâchoire de " + romain.getNom());
-		Equipement trophees[] = romain.recevoirCoup((force / 3) * effetPotion);
-		for (int i = 0; trophees != null && i < trophees.length; i++, nb_trophees++) {
-			this.trophees[nb_trophees] = trophees[i];
+		Equipement[] trophees1 = romain.recevoirCoup((force / 3) * effetPotion);
+		for (int i = 0; trophees1 != null && i < trophees1.length; i++, nbTrophees++) {
+			this.trophees[nbTrophees] = trophees1[i];
 		}
-		return;
 	}
-
-	// public void frapper(Romain romain) {
-	// System.out.println(nom + "envoie un grand coup dans la mâchoire de " +
-	// romain.getNom());
-	// romain.recevoirCoup((force / 3) * effetPotion);
-	// }
 
 	@Override
 	public String toString() {
@@ -55,15 +44,22 @@ public class Gaulois {
 		return effetPotion;
 	}
 
-	public static void main(String[] args) {
-		Gaulois asterix = new Gaulois("Asterix", 8);
-		Romain jojo = new Romain("Jojo", 6);
-		asterix.prendreParole();
-		asterix.parler("Hello world!");
-		asterix.frapper(jojo);
-		asterix.boirePotion(6);
-		asterix.frapper(jojo);
+	public void faireUneDonnation(Musee musee) {
+		if (nbTrophees > 0) {
+			parler("Je donne au musée tous mes trophées !");
+			for (int i = 0; i < nbTrophees; i++) {
+				System.out.println(" - " + trophees[i]);
+				musee.donnerTrophees(this, trophees[i]);
+				nbTrophees--;
+			}
+		}
+	}
 
+
+	public static void main(String[] args) {
+		Musee museum = new Musee();
+		Gaulois asterix = new Gaulois("Asterix", 8);
+		asterix.faireUneDonnation(museum);
 	}
 
 }
