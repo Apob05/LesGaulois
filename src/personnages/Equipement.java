@@ -5,13 +5,27 @@ public enum Equipement {
 
 	private String nom;
 
-	private Equipement(String nom) {
+	private Equipement(String nom, Gaulois gaulois) {
+		this.nom = nom;
+		this.gaulois = gaulois;
+	}
+
+	private void Equipements(String nom) {
 		this.nom = nom;
 	}
 
-	@Override
-	public String toString() {
+	public String getNom() {
 		return nom;
 	}
 
+	private Gaulois gaulois;
+
+	private void Equipements(String nom, Gaulois gaulois) {
+		this.nom = nom;
+		this.gaulois = gaulois;
+	}
+
+	public Gaulois getGaulois() {
+		return gaulois;
+	}
 }
